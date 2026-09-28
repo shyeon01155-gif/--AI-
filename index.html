@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6f8">
+  <title>반도체 실적 비교 | OpenDART</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="실적 비교 홈"><span class="brand-icon">▥</span><span>INSIGHT<span class="brand-light"> / DART</span></span></a>
+      <div class="top-meta"><span class="live-dot"></span> OPENDART 연결 데이터 <span class="divider"></span> K-IFRS</div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div class="eyebrow"><span>FINANCIAL COMPARISON</span><i></i><span>SEMICONDUCTOR</span></div>
+        <h1>두 반도체 기업의<br><em>실적을 한눈에.</em></h1>
+        <p>삼성전자와 SK하이닉스의 연간 손익을<br class="mobile-break"> 공시 데이터로 비교합니다.</p>
+      </section>
+
+      <section class="toolbar" aria-label="조회 조건">
+        <div class="select-wrap"><label for="year">사업연도</label><select id="year"></select></div>
+        <div class="basis-chip"><span class="basis-icon">◎</span><span>연결 기준</span><span class="basis-sep">·</span><span>사업보고서</span></div>
+        <button id="refresh" class="refresh"><span class="refresh-icon">↻</span> 데이터 조회</button>
+      </section>
+
+      <div id="notice" class="notice" role="status" hidden></div>
+
+      <section class="metrics" id="metrics" aria-label="핵심 실적">
+        <article class="metric-card accent-blue"><div class="metric-top"><span>매출액</span><span class="metric-mark">01</span></div><div class="metric-values" data-metric="revenue"></div><div class="metric-foot">연간 매출 규모</div></article>
+        <article class="metric-card accent-violet"><div class="metric-top"><span>매출원가</span><span class="metric-mark">02</span></div><div class="metric-values" data-metric="cost"></div><div class="metric-foot">제품 및 서비스 원가</div></article>
+        <article class="metric-card accent-orange"><div class="metric-top"><span>판매비와관리비</span><span class="metric-mark">03</span></div><div class="metric-values" data-metric="sga"></div><div class="metric-foot">영업 활동 비용</div></article>
+        <article class="metric-card accent-green"><div class="metric-top"><span>영업이익</span><span class="metric-mark">04</span></div><div class="metric-values" data-metric="operating_income"></div><div class="metric-foot">본업에서 얻은 이익</div></article>
+      </section>
+
+      <section class="chart-panel">
+        <div class="panel-heading"><div><div class="section-kicker">YEARLY PERFORMANCE</div><h2>실적 흐름</h2></div><div class="legend"><span><i class="legend-samsung"></i>삼성전자</span><span><i class="legend-sk"></i>SK하이닉스</span></div></div>
+        <div class="chart-controls" id="metricTabs"><button class="active" data-metric="revenue">매출액</button><button data-metric="cost">매출원가</button><button data-metric="sga">판관비</button><button data-metric="operating_income">영업이익</button></div>
+        <div class="chart-area" id="chartArea"><div class="loading">공시 데이터를 불러오는 중<span class="loader"></span></div></div>
+        <div class="chart-footer"><span>단위: 억 원</span><span id="updatedAt">최신 사업보고서 기준</span></div>
+      </section>
+
+      <section class="table-panel">
+        <div class="panel-heading table-heading"><div><div class="section-kicker">DETAILS</div><h2>항목별 상세</h2></div><span class="unit-tag">단위: 원</span></div>
+        <div class="table-scroll"><table><thead><tr><th>재무 항목</th><th><span class="company-dot samsung"></span>삼성전자</th><th><span class="company-dot sk"></span>SK하이닉스</th><th>차이</th></tr></thead><tbody id="tableBody"></tbody></table></div>
+      </section>
+
+      <footer><span>데이터 출처: 금융감독원 전자공시시스템 OpenDART</span><span id="footerYear">—</span></footer>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

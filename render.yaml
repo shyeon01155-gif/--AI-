@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: semiconductor-performance-dashboard
+    runtime: node
+    plan: free
+    buildCommand: npm install --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/status
+    envVars:
+      - key: OPENDART_API_KEY
+        sync: false
